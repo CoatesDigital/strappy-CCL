@@ -16,6 +16,6 @@
 		"component/spinner/Spinner.js",
 		"controller/Router.js",
 		"helper/String.js",
-		"CCL.js",
+		"CCL.js"
 	]
 }
