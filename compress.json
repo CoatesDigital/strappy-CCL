@@ -1,0 +1,21 @@
+{
+	"files":
+	[
+		"component/application/Controller.js",
+		"component/container/controller/AutoLayout.js",
+		"component/container/controller/CardLayout.js",
+		"component/container/controller/HTMLLayout.js",
+		"component/container/controller/State.js",
+		"component/container/store/State.js",
+		"component/container/view/Default.js",
+		"component/container/Container.js",
+		"component/spinner/controller/Default.js",
+		"component/spinner/controller/State.js",
+		"component/spinner/store/State.js",
+		"component/spinner/view/Default.js",
+		"component/spinner/Spinner.js",
+		"controller/Router.js",
+		"helper/String.js",
+		"CCL.js"
+	]
+}

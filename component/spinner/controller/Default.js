@@ -241,7 +241,8 @@ $JSKK.Class.create
 					destination:	this.getConfig('signalSendDestination')
 				},
 				{
-					value:	currentValue
+					value:	currentValue,
+					source: this.getConfig('name')
 				}
 			);
 				
