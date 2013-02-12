@@ -108,7 +108,7 @@ $JSKK.Class.create
 			
 		},
 		onInputClick: function(ev)
-		{
+		{ 
 			
 			// at present you should only reach here when this.getConfig('directEditable') is false;
 			ev.preventDefault();

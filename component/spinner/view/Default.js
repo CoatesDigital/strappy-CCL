@@ -48,7 +48,6 @@ $JSKK.Class.create
 				);
 					
 			}
-			
 				
 			// don't need these event if we aren't going to continuously change the value on mousedown
 			if (this.getConfig('doContinuous'))
