@@ -107,6 +107,15 @@ $JSKK.Class.create
 			this.controlFocus = false;
 			
 		},
+		onInputClick: function(ev)
+		{
+			
+			// at present you should only reach here when this.getConfig('directEditable') is false;
+			ev.preventDefault();
+			$(ev.currentTarget).blur(); // shouldn't need this'
+			return;
+			
+		},
         onInputFocusout: function()
         {
             var newValue = this.getView('Default').getInputValue();

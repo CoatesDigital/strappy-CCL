@@ -52,7 +52,6 @@ $JSKK.Class.create
 			 */
 			loop:					false,
 			
-			
 			/**
 			 * @cfg {Boolean} useNumeric Whether to use straight up numbers (subject to precision config) e.g. -1, 0, 1, 2. If false the altValues config array should be set 
 			 */
@@ -62,6 +61,11 @@ $JSKK.Class.create
 			 * @cfg {String[]} altValues if useNumeric config is set to false this array must (well not must but nothing good will happen) be populated with the alternate values needed, e.g. 'AM', 'PM'
 			 */
 			altValues:				[],
+			
+			/**
+			 * @cfg {Boolean} direxctEditable Whether the user can directly edit the value of the spinner, when false the controls MUSt be used
+			 */
+			directEditable:			true,
 			
 			/**
 			 * @cfg {Boolean} doContinuous Whether to continuously change the value if the mouse is held down
@@ -98,7 +102,9 @@ $JSKK.Class.create
 			
 			signalSendDestination:		null,
 			
-			signalReceiveDestination:	null
+			signalReceiveDestination:	null,
+			
+			
 		},
 		components:
 		{
