@@ -41,14 +41,6 @@ $JSKK.Class.create
 				
 				this.bindDOMEvent
 				(
-					'click.input',
-					[this.getContainer(), 'input'],
-					'controller:Default',
-					'onInputFocus'
-				);
-
-				this.bindDOMEvent
-				(
 					'focus.input',
 					[this.getContainer(), 'input'],
 					'controller:Default',

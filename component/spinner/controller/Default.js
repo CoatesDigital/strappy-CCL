@@ -112,7 +112,7 @@ $JSKK.Class.create
 			
 			// at present you should only reach here when this.getConfig('directEditable') is false;
 			ev.preventDefault();
-			$(ev.currentTarget).focusout(); // shouldn't need this
+			$(ev.currentTarget).blur(); // shouldn't need this
 
 			// @todo establish a method to focus the next input (or other dom element)
 			return;
