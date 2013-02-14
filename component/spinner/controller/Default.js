@@ -107,19 +107,24 @@ $JSKK.Class.create
 			this.controlFocus = false;
 			
 		},
-		onInputClick: function(ev)
+		onInputFocus: function(ev)
 		{ 
 			
 			// at present you should only reach here when this.getConfig('directEditable') is false;
 			ev.preventDefault();
-			$(ev.currentTarget).blur(); // shouldn't need this'
+			$(ev.currentTarget).focusout(); // shouldn't need this
+
+			// @todo establish a method to focus the next input (or other dom element)
 			return;
 			
 		},
         onInputFocusout: function()
         {
+			
             var newValue = this.getView('Default').getInputValue();
             var store = this.getStore('State');
+
+			// validation for the current spinner value
             if (this.getConfig('useNumeric'))
             {
                 if( !isNaN(parseFloat(newValue)))
