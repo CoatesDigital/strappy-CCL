@@ -36,19 +36,14 @@ $JSKK.Class.create
                 'onInputFocusout'
             );
 				
-			if (!this.getConfig('directEditable'))
-			{
-				
-				this.bindDOMEvent
-				(
-					'focus.input',
-					[this.getContainer(), 'input'],
-					'controller:Default',
-					'onInputFocus'
-				);
+			this.bindDOMEvent
+			(
+				'focus.input',
+				[this.getContainer(), 'input'],
+				'controller:Default',
+				'onInputFocus'
+			);
 					
-			}
-				
 			// don't need these event if we aren't going to continuously change the value on mousedown
 			if (this.getConfig('doContinuous'))
 			{
