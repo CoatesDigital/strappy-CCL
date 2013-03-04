@@ -84,9 +84,25 @@ $JSKK.Class.create
 		},
 		renderTemplate: function()
 		{
+
 			this.getContainer().addClass(this.getConfig('cls'));
 			this.getContainer().append(this.getTemplate('Spinner'));
-			this.find('input').attr('name',this.getConfig('name'));
+			
+			this.getInput().attr('name',this.getConfig('name'));
+			if (!this.getConfig('directEditable'))
+			{
+
+				this.getInput().addClass('not-editable');
+
+			}
+			else
+			{
+
+				this.getInput().addClass('editable');
+
+			}
+
+
 		},
 		getInput: function()
 		{
@@ -106,6 +122,15 @@ $JSKK.Class.create
 		setInputValue: function(value)
 		{
 			return this.getInput().val(value);
+		},
+		setControlActive: function(el)
+		{
+			$(el).addClass('active');
+		},
+		removeControlActive: function(el)
+		{
+			$(el).removeClass('active');
 		}
+
 	}
 );

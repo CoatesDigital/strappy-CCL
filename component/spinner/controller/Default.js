@@ -63,7 +63,9 @@ $JSKK.Class.create
 			
 			this.mouseDown = true;
             var target = $(ev.target); //Bug fix: was $(ev.currentTarget) which returns the parent element
-			// if we wish to allow for continuous value cahnge , make sure we run through the method that sets up the timeout
+			this.getView('Default').setControlActive(target);
+			
+			// if we wish to allow for continuous value change , make sure we run through the method that sets up the timeout
 			if (this.getConfig('doContinuous')) {
 				
 				if (this.controlFocus) {
@@ -83,17 +85,21 @@ $JSKK.Class.create
 		},
         onControlClick:function(ev)
         {
-			
+
             this.mouseDown = false;
+			
             var target = $(ev.target);
+			
             return this.rotate(target);
 			
         },
-		onControlMouseup: function()
+		onControlMouseup: function(ev)
 		{
 			
 			this.mouseDown = false;
-			
+			var target = $(ev.target);
+			this.getView('Default').removeControlActive(target);
+
 		},
 		onControlMouseover: function()
 		{
