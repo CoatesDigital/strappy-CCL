@@ -98,7 +98,7 @@ $JSKK.Class.create
 			else
 			{
 
-				this.getInput().addClass('editable');
+				this.getInput().addClass('is-editable');
 
 			}
 
