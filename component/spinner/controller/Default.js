@@ -43,7 +43,7 @@ $JSKK.Class.create
 		{
 			
 			view.renderTemplate();
-			
+
 		},
 		onReadyState: function()
 		{

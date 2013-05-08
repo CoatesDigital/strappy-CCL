@@ -101,7 +101,10 @@ $JSKK.Class.create
 				this.getInput().addClass('is-editable');
 
 			}
-
+			if (!!this.getConfig('containerClass'))
+			{
+				this.getContainer().addClass(this.getConfig('containerClass'));
+			}
 
 		},
 		getInput: function()
