@@ -35,7 +35,7 @@ $JSKK.Class.create
 		},
 		onCurrentValueChanged: function(value)
 		{
-			this.getView('Default').setInputValue(value);
+			this.getView('Default').setInputValue(strappy.ccl.helper.String.leftStrPad(value,  this.getConfig('defaultPadding'), '0'));
 		},
 		initialiseValue: function()
 		{
