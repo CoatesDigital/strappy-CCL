@@ -17,7 +17,9 @@ $JSKK.Class.create
 			},
 			'private':
 			{
-				currentValue:		null
+				currentValue:		null,
+				minValue:  			null,
+				maxValue:  			null
 			}
 		},
 		getCurrentValue: function()

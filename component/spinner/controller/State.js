@@ -61,8 +61,8 @@ $JSKK.Class.create
 			{
 				
 				// increment if there is no max value or if there is a max value so long as the current value is less
-				var maxValue = this.getConfig('maxValue'),
-					minValue = this.getConfig('minValue');
+				var maxValue = stateStore.get('maxValue'),
+					minValue = stateStore.get('minValue');
 
 				if (doLoop && (maxValue !== null || minValue !== null)) 
 				{ // can't loop if we have no maxValue or minValue
@@ -122,8 +122,8 @@ $JSKK.Class.create
 				previousValue = null;
 			
 			if (this.getConfig('useNumeric')) {
-				var minValue = this.getConfig('minValue'),
-					maxValue = this.getConfig('maxValue');
+				var maxValue = stateStore.get('maxValue'),
+					minValue = stateStore.get('minValue');
 					
 				if (doLoop && (maxValue !== null || minValue !== null)) { // can't loop if we have no maxValue or minValue
 					if (currentValue > minValue) {

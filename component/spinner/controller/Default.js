@@ -9,6 +9,7 @@ $JSKK.Class.create
 (
 	{},
 	{
+		
 		mouseDown:				false,
 		controlFocus:			false,
 		timingOut:				false,
@@ -21,6 +22,8 @@ $JSKK.Class.create
 			this.init.$parent();
 			this.getView('Default')	.observe('onTemplatesLoaded',	this.onTemplatesLoaded.bind(this));
 			this.getController('State')	.observe('onReadyState',		this.onReadyState.bind(this));
+			
+			this.setRangeState();
 			
 			// receiving initialisation and values from the parent component
 			this.registerSignals
@@ -38,6 +41,7 @@ $JSKK.Class.create
 					}
 				}
 			);
+			
 		},
 		onTemplatesLoaded: function(view)
 		{
@@ -50,13 +54,13 @@ $JSKK.Class.create
 			
 			this.getController('State').initialiseValue();
 			
-			// this.sendValue();
-			
 		},
 		onValueChange: function(signal)
 		{
+			
 			var signalBody = signal.getBody();
 			this.getStore('State').setCurrentValue(signalBody.value);
+			
 		},
 		onControlMousedown: function(ev)
 		{
@@ -138,40 +142,88 @@ $JSKK.Class.create
 			// validation for the current spinner value
             if (this.getConfig('useNumeric'))
             {
+            	
                 if( !isNaN(parseFloat(newValue)))
                 {
+                	
                     if(parseFloat(newValue) >= this.getConfig('minValue') && parseFloat(newValue) <= this.getConfig('maxValue'))
                     {
+                    	
                         //set new value
                         this.setUserInputValue(strappy.ccl.helper.String.leftStrPad(newValue, this.getConfig('defaultPadding'), '0'));
-                    } else if(parseFloat(newValue) < this.getConfig('minValue'))
+                        
+                    }
+                    else if(parseFloat(newValue) < this.getConfig('minValue'))
                     {
+                    	
                         //user input is less than min value. therefore setting min value
                         this.setUserInputValue(strappy.ccl.helper.String.leftStrPad(this.getConfig('minValue'), this.getConfig('defaultPadding'), '0'));
-                    } else {
+                        
+                    }
+                    else
+                    {
+                    	
                         //user input is greater than min value. therefore setting min value
                         this.setUserInputValue(strappy.ccl.helper.String.leftStrPad(this.getConfig('maxValue'), this.getConfig('defaultPadding'), '0'));
+                        
                     }
-                } else {
+                    
+                } 
+                else
+                {
+                	
                     //setting current value
                     this.getView('Default').setInputValue(store.get('currentValue'));
-                }
-            } else {
-                if (this.getConfig('altValues').inArray(newValue)) {
-                    //set new value
-                    this.setUserInputValue(newValue);
-                } else {
-                    //incorrect input
-                    this.getView('Default').setInputValue(store.get('currentValue'));
+                    
                 }
             }
+            else
+            {
+            	
+                if (this.getConfig('altValues').inArray(newValue))
+                {
+                	
+                    //set new value
+                    this.setUserInputValue(newValue);
+                    
+                }
+                else
+                {
+                	
+                    //incorrect input
+                    this.getView('Default').setInputValue(store.get('currentValue'));
+                    
+                }
+            }
+            
         },
         setUserInputValue: function(val)
         {
+        	
             this.getView('Default').setInputValue(val);
             this.getStore('State').setCurrentValue(val);
             this.sendValue();
+            
 		},
+		setRangeState: function()
+		{	
+			
+			var stateStore = this.getStore('State');
+			
+			var minValue = this.getConfig('minValue');
+			if (!Object.isNull(minValue))
+			{
+				stateStore.set('minValue', minValue);
+			}
+			
+			var maxValue = this.getConfig('maxValue');
+			if (!Object.isNull(maxValue))
+			{
+				stateStore.set('maxValue', maxValue);
+			}
+			
+		},
+		
 		rotateSpinner: function(target)
 		{
 			
@@ -193,6 +245,7 @@ $JSKK.Class.create
 			}.bind(this), this.currentTimeoutLength);
 			
 		},
+		
 		rotate: function(target)
 		{
 			var direction = null;
@@ -226,19 +279,26 @@ $JSKK.Class.create
 			this.sendValue();
 			
 		},	
+		
 		getTimeout: function()
 		{
 			
 			if (this.getConfig('doAccelerate')) {
 				// if accelerating and using a function
-				if (this.getConfig('accelerationFunction')) {
+				if (this.getConfig('accelerationFunction'))
+				{
+					
 					// @todo pass paramters time (duration of the change), initial time, final time.
 					var time = 3000;
 					return this.getConfig('accelerationFunction')(time, this.getConfig('minimumRatioTimeout'), this.getConfig('incrementTimeout'));
+					
 				}
 				// if accelerating and using a simple ratio
-				if (this.currentTimeoutLength > this.getConfig('minimumRatioTimeout')) {
+				if (this.currentTimeoutLength > this.getConfig('minimumRatioTimeout'))
+				{
+					
 					return this.currentTimeoutLength * this.getConfig('accelerationRatio');
+					
 				}
 			}
 			
@@ -246,12 +306,14 @@ $JSKK.Class.create
 			return this.currentTimeoutLength;
 			
 		},
+		
 		resetTimeout: function()
 		{
 			
 			this.currentTimeoutLength = this.getConfig('incrementTimeout');
 			
 		},
+		
 		sendValue: function()
 		{
 
@@ -272,17 +334,21 @@ $JSKK.Class.create
 			);
 				
 		},
+		
 		onSignalShow: function()
 		{
 			
 			this.getView('Default').show();
 			
 		},
+		
 		onSignalHide: function()
 		{
 			
 			this.getView('Default').hide();
 			
 		}
+		
 	}
+	
 );
