@@ -193,14 +193,23 @@ $JSKK.Class.create
 			}.bind(this), this.currentTimeoutLength);
 			
 		},
-		rotate: function(direction)
+		rotate: function(target)
 		{
-			
-			// check if we already have teh direction or if we need to get it again
-			// @todo store the direction in a calss property to avoid doing this jiggery pokery and allowing mixed variable type
-			if (direction.jquery) {
-				direction = direction.attr('class');
+			var direction = null;
+			// check if we already have the direction or if we need to get it again
+			// @todo store the direction in a class property to avoid doing this jiggery pokery and allowing mixed variable type
+			if (target.jquery) 
+			{
+				
+				direction = target.attr('class');
+				
 			}
+			
+			if (direction === null)
+			{
+				throw Error('Spinner direction could not be set');	
+			}
+			
 			// letthe state controller know that we need to do an increment
 			switch (direction)
 			{

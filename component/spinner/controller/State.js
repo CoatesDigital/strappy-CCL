@@ -11,6 +11,7 @@ $JSKK.Class.create
 	{
 		init: function()
 		{
+			
 			this.init.$parent();
 			this.getView('Default').observe('onReady',this.onViewReady.bind(this));
 			
@@ -20,6 +21,7 @@ $JSKK.Class.create
 					currentValue:	'onCurrentValueChanged'
 				}
 			);
+			
 		},
 		onBeforeChange: function(state, key, value)
 		{
@@ -27,44 +29,69 @@ $JSKK.Class.create
 		},
 		onViewReady: function(view)
 		{
+			
 			this.setViewReadyState(view.$reflect('name'));
 			if (this.getReadyViews().inArray(view.$reflect('name')))
 			{
 				this.setReady();
 			}
+			
 		},
 		onCurrentValueChanged: function(value)
 		{
+			
 			this.getView('Default').setInputValue(strappy.ccl.helper.String.leftStrPad(value,  this.getConfig('defaultPadding'), '0'));
+			
 		},
 		initialiseValue: function()
 		{
+			
 			this.getStore('State').setCurrentValue(strappy.ccl.helper.String.leftStrPad(this.getConfig('defaultValue'), this.getConfig('defaultPadding'), '0'));
+		
 		},
 		increase: function()
 		{
+			
 			var stateStore = this.getStore('State'),
 				currentValue = stateStore.getCurrentValue(),
 				doLoop = this.getConfig('loop'),
 				nextValue = null;
 				
-			if (this.getConfig('useNumeric')) {
+			if (this.getConfig('useNumeric'))
+			{
 				
 				// increment if there is no max value or if there is a max value so long as the current value is less
-				var maxValue = this.getConfig('maxValue')
+				var maxValue = this.getConfig('maxValue'),
 					minValue = this.getConfig('minValue');
 
-				if (doLoop && (maxValue !== null || minValue !== null)) { // can't loop if we have no maxValue or minValue
-					if (currentValue < maxValue) {
+				if (doLoop && (maxValue !== null || minValue !== null)) 
+				{ // can't loop if we have no maxValue or minValue
+					if (currentValue < maxValue) 
+					{
+						
 						nextValue = currentValue + 1;
-					} else if (currentValue == maxValue) {
+					} 
+					else if (currentValue == maxValue) 
+					{
+						
 						nextValue = minValue;
+						
 					}
-				} else {
-					if (maxValue === null || currentValue < maxValue) {
+				}
+				else 
+				{
+					
+					if (maxValue === null || currentValue < maxValue)
+					{
+						
 						nextValue = currentValue + 1;
-					} else {
+						
+					}
+					else
+					{
+						
 						nextValue = currentValue
+						
 					}
 				}
 
