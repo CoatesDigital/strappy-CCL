@@ -102,7 +102,7 @@ $JSKK.Class.create
 			
 			signalSendDestination:		null,
 			
-			signalReceiveDestination:	null,
+			signalReceiveDestination:	null
 			
 			
 		},
